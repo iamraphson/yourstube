@@ -1,0 +1,22 @@
+{
+  "name": "yourstube",
+  "description": "Build your own youtube..well,we can call it youtube clone.🤓",
+  "main": "server.js",
+  "authors": [
+    "Ayeni Olusegun <nsegun5@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "MEAN"
+  ],
+  "homepage": "https://github.com/iamraphson/yourstube",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ]
+}
