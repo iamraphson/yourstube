@@ -1,0 +1,31 @@
+{
+  "name": "yourstube",
+  "version": "1.0.0",
+  "description": "Build your own youtube..well,we can call it youtube clone.🤓",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "type"
+  },
+  "author": "Ayeni Olusegun",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "cloudinary": "^1.4.1",
+    "cors": "^2.7.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "gravatar": "^1.5.2",
+    "jwt-simple": "^0.5.0",
+    "lodash": "^4.13.1",
+    "moment": "^2.13.0",
+    "mongoose": "^4.5.2",
+    "morgan": "^1.7.0"
+  }
+}
