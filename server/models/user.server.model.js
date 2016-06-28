@@ -31,4 +31,4 @@ userSchema.methods.comparePassword = function(password, done){
     })
 };
 
-module.exports = mongoose.modelName('User_tbl', userSchema);
+module.exports = mongoose.model('User_tbl', userSchema);
