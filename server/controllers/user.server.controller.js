@@ -5,6 +5,7 @@ var cloudinary = require("cloudinary");
 var token = require("../../config/secrets");
 var user = require('../models/user.server.model');
 var gravatar = require('gravatar');
+var token = require('../../config/token');
 
 module.exports = {
 
@@ -32,7 +33,7 @@ module.exports = {
                 if(err){
                     res.json({message: err.message}).status(500)
                 } else {
-                    res.send({token : "cool"});
+                    res.send({token : token.createJWT(result)});
                 }
             })
         })
@@ -69,7 +70,7 @@ module.exports = {
                     res.json({message : "Invalid Password"}).status(401);
                 }
 
-                res.send({token : "csdf"});
+                res.send({token : token.createJWT(loginUser)});
             })
         });
     },
