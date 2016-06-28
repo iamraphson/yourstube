@@ -41,6 +41,8 @@
     "ng-dialog": "ngDialog#^0.6.2",
     "angularUtils-disqus": "angular-utils-disqus#^1.0.0",
     "satellizer": "^0.14.1",
-    "angular-cookies": "^1.5.7"
+    "angular-cookies": "^1.5.7",
+    "angular-toastr": "^1.7.0",
+    "angular-marked": "^1.2.1"
   }
 }

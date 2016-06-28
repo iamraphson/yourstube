@@ -27,5 +27,9 @@
     "moment": "^2.13.0",
     "mongoose": "^4.5.2",
     "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.1.0"
   }
 }
