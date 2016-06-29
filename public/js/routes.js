@@ -36,6 +36,9 @@ appRoutes.config(['$routeProvider', '$locationProvider', function($routeProvider
                 loginRequired: loginRequired
             }
         })
+        .when('/page/about', {
+            templateUrl: './views/about.client.view.html'
+        })
         .otherwise({ redirectTo: '/' });;
 
 
