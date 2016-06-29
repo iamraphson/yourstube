@@ -14,11 +14,20 @@ module.exports = {
         return res.status(200).json({message : "Welcome to YOURSTUBE API"});
     },
 
+    /*
+     * Register User on application
+     * @param req
+     * @param res
+     * @return JSON
+     *
+     */
     registerUser : function(req, res){
+
         user.findOne({email : req.body.email}, 'password', function(err, existingUser){
             if(existingUser){
                 return res.status(409).json({message : "Email is already taken"});
             }
+
 
             var secureImageUrl = gravatar.url(req.body.email, {s: '200', r: 'x', d: 'retro'}, true);
 
@@ -29,26 +38,28 @@ module.exports = {
                 user_avatar : secureImageUrl
             });
 
+
             newUser.save(function(err, result){
+                console.log(err);
                 if(err){
-                    res.json({message: err.message}).status(500)
-                } else {
-                    res.send({token : token.createJWT(result)});
+                    return res.status(500).json({message: err.message});
                 }
-            })
-        })
+                return res.send({token : token.createJWT(result)});
+            });
+
+        });
     },
 
     /*
-    *get current logged in user details
-    *@param req
+    * get current logged in user details
+    * @param req
     * @param res
     * @return Void
     *
-     */
+    */
     getLoggedInUserDetail : function(req, res){
         user.findById(req.user, function(err, user1){
-            res.send(user1);
+            return res.send(user1);
         })
     },
 
@@ -61,17 +72,16 @@ module.exports = {
 
     auth : function(req, res){
         user.findOne({email : req.body.email}, function(err, loginUser){
-           if(!loginUser){
-               res.json({message : "Invalid Email"}).status(401);
-           }
+           if(!loginUser)
+               return res.status(401).json({message : "Invalid Email"});
 
-            loginUser.comparePassword(re.body.passwrod, function(err, isMatch){
+
+           loginUser.comparePassword(req.body.password, function(err, isMatch){
                 if(!isMatch){
-                    res.json({message : "Invalid Password"}).status(401);
+                    return res.status(401).json({message : "Invalid Password"});
                 }
-
-                res.send({token : token.createJWT(loginUser)});
-            })
+                return res.send({token : token.createJWT(loginUser)});
+           });
         });
     },
 

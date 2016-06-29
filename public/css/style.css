@@ -117,9 +117,9 @@ ul {
 .has-feedback .form-control-feedback {
   top: 0;
   left: 0;
-  width: 46px;
-  height: 46px;
-  line-height: 46px;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
   color: #555;
 }
 
