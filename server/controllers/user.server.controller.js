@@ -64,12 +64,11 @@ module.exports = {
     },
 
     /*
-    *Authenticate a user using Email and password
+    * Authenticate a user using Email and password
     * @param req
     * @param res
     * @return json
      */
-
     auth : function(req, res){
         user.findOne({email : req.body.email}, function(err, loginUser){
            if(!loginUser)
@@ -87,17 +86,16 @@ module.exports = {
 
     updateLoggedInUserDetail: function(req, res){
         user.findById(req.user, function(err, user1){
-            if(user1)
+            if(!user1)
                 return res.json(400).send({message: "User Not Found"});
 
             user1.fullName = req.body.fullName || user1.fullName;
-
-            user.email = req.body.email || user1.email;
+            user1.email = req.body.email || user1.email;
 
             user1.save(function(err){
-                return res.json(200).send({message: "Profile Update Successfully"});
-            })
-        })
+                return res.status(200).send({message: "Profile Update Successfully"});
+            });
+        });
     }
 
 

@@ -28,7 +28,15 @@ appRoutes.config(['$routeProvider', '$locationProvider', function($routeProvider
             resolve: {
                 loginRequired: loginRequired
             }
-        });
+        })
+        .when('/account', {
+            templateUrl: './views/edit-account.client.view.html',
+            controller: 'ProfileController',
+            resolve: {
+                loginRequired: loginRequired
+            }
+        })
+        .otherwise({ redirectTo: '/' });;
 
 
     function skipIfLoggedIn($q, $auth) {
