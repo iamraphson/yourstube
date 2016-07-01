@@ -39,7 +39,14 @@ appRoutes.config(['$routeProvider', '$locationProvider', function($routeProvider
         .when('/page/about', {
             templateUrl: './views/about.client.view.html'
         })
-        .otherwise({ redirectTo: '/' });;
+        .when('/upload', {
+            templateUrl: './../views/upload.client.view.html',
+            controller: 'UploadController',
+            resolve: {
+                loginRequired: loginRequired
+            }
+        })
+        .otherwise({ redirectTo: '/' });
 
 
     function skipIfLoggedIn($q, $auth) {

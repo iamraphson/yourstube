@@ -50,6 +50,10 @@
     <script src="vendor/angular-moment/angular-moment.js"></script>
     <script src="vendor/marked/lib/marked.js"></script>
     <script src="vendor/satellizer/satellizer.js"></script>
+    <script src="vendor/cloudinary-core/cloudinary-core.min.js"></script>
+    <script src="vendor/cloudinary_ng/js/angular.cloudinary.js"></script>
+    <script src="vendor/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="vendor/ng-file-upload/ng-file-upload-shim.min.js"></script>
 
     <!-- Custom JS-->
     <script src="js/app.js" type="text/javascript"></script>
@@ -57,6 +61,7 @@
     <script src="js/controller/nav.client.controller.js" type="text/javascript"></script>
     <script src="js/controller/auth.client.controller.js" type="text/javascript"></script>
     <script src="js/controller/account.client.controller.js" type="text/javascript"></script>
+    <script src="js/controller/upload.client.controller.js" type="text/javascript"></script>
     <script src="js/service/user.client.service.js" type="text/javascript"></script>
 
 </head>
@@ -67,6 +72,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li ng-if="isAuthenticated()"><a href="/account">Profile</a></li>
+            <li ng-if="isAuthenticated()"><a href="/upload">Upload</a></li>
             <li><a href="/page/about">About</a></li>
         </ul>
         <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
