@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Upload Video</div>
+        <div class="panel-body">
+            <div id="direct_upload"
+                 ngf-drop="uploadFiles($files)"
+                 ngf-drag-over-class="dragOverClass($event)"
+                 ng-model="files"
+                 ng-multiple="false">
+                <h4>New Video</h4>
+                <p>Directly upload or drag and drop a video into the dashed area.</p>
+                <form>
+                    <div class="form_line">
+                        <label path="title"> Title: </label>
+                        <div class="form_controls">
+                            <input type="text" class="form-control" placeholder="Title" ng-model="title" />
+                        </div>
+                    </div>
+                    <div class="form_line">
+                        <label path="video" style="margin-top:10px;"> Video: </label>
+                        <div class="form_controls">
+                            <div class="upload_button_holder">
+                                <div href="#" class="upload_button" ngf-select="uploadFiles($files)" title="upload" multiple="multiple" resetOnClick="true"> Select File to Upload</div>
+                            </div>
 
-</body>
-</html>
+                        </div>
+                    </div>
+                </form>
+                <h5>Status</h5>
+                <div class="file" ng-repeat="file in files">
+                    <h3>{{ file.name }} {{ f.$error }} {{ f.$errorParam }}</h3>
+                    <div class="status">{{ file.status }}</div>
+                    <div class="progress" ng-show="file.status == 'Done...100%'">
+                        <div class="progress-bar progress-bar-success progress-bar-striped" ng-show="file.status == 'Done...100%'" style="width: {{ file.progress }}%" ng-init="progress=0" role="progressbar">
+                            <span class="sr-only">{{ file.progress }}</span>
+                        </div>
+                    </div>
+
+                    <div class="progress" ng-show="file.status == 'Uploading...'">
+                        <div class="progress-bar progress-bar-info progress-bar-striped active" ng-show="file.status == 'Uploading...'" style="width: {{ file.progress }}%" ng-init="progress=0" role="progressbar">
+                            <span class="sr-only">{{ file.progress }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
