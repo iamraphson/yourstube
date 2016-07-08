@@ -46,6 +46,13 @@ appRoutes.config(['$routeProvider', '$locationProvider', function($routeProvider
                 loginRequired: loginRequired
             }
         })
+        .when('/myvideos', {
+            templateUrl: './../views/myvideos.client.view.html',
+            controller: 'VideoController',
+            resolve: {
+                loginRequired: loginRequired
+            }
+        })
         .otherwise({ redirectTo: '/' });
 
 

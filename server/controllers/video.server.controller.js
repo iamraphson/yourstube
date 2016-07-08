@@ -40,7 +40,25 @@ module.exports = {
      */
     retrieveAll: function(req, res){
         video.find({}, function(err, videos){
+            if(err) {
+                return res.status(500).json({ message: err.message });
+            }
             return res.status(200).json(videos)
+        });
+    },
+
+    /**
+     *  fetch all uploaded video by current logged in user
+     * @param req
+     * @param res
+     * @return {object}
+     */
+    retrieveAllByUserId: function(req, res){
+        video.find({uploaded_by :req.user}, function(err, videos){
+            if(err) {
+                return res.status(500).json({ message: err.message });
+            }
+            return res.status(200).json({success: true, videos: videos});
         });
     }
 }

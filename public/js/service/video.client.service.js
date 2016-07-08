@@ -15,6 +15,16 @@ app.factory('Video', function($http){
 
         fetchAll: function(){
             return $http.get('/api/videos');
+        },
+
+        fetchMyVideos: function(cb){
+            return $http.get('/api/me/videos').then(function(response){
+                if(response.data.success){
+                    cb(true, response.data);
+                } else {
+                    cb(true, response.data);
+                }
+            });
         }
     }
 });
