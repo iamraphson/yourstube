@@ -9,7 +9,7 @@ var videoSchema =  mongoose.Schema({
     url: {type: String, required: true},
     duration: {type: String, required: true},
     format: {type: String, required: true},
-    time_uploaded: {type: String, deafult: Date.now},
+    time_uploaded: {type: Date, default: Date.now},
 });
 
 module.exports = mongoose.model('Video', videoSchema, 'videos');

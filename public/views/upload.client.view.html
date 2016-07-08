@@ -13,14 +13,23 @@
                     <div class="form_line">
                         <label path="title"> Title: </label>
                         <div class="form_controls">
-                            <input type="text" class="form-control" placeholder="Title" ng-model="title" />
+                            <input type="text" class="form-control" placeholder="Title" ng-model="video.title" />
                         </div>
                     </div>
+                    <div class="form_line">
+                        <label path="title"> Description: </label>
+                        <div class="form_controls">
+                            <textarea class="form-control" placeholder="Description" ng-model="video.description" required></textarea>
+                        </div>
+                    </div>
+
+
                     <div class="form_line">
                         <label path="video" style="margin-top:10px;"> Video: </label>
                         <div class="form_controls">
                             <div class="upload_button_holder">
-                                <div href="#" class="upload_button" ngf-select="uploadFiles($files)" title="upload" multiple="multiple" resetOnClick="true"> Select File to Upload</div>
+                                <div href="#" class="upload_button" ngf-select="uploadFiles($files)" title="upload"
+                                     multiple="multiple" resetOnClick="true"> Select File to Upload</div>
                             </div>
 
                         </div>
@@ -30,8 +39,9 @@
                 <div class="file" ng-repeat="file in files">
                     <h3>{{ file.name }} {{ f.$error }} {{ f.$errorParam }}</h3>
                     <div class="status">{{ file.status }}</div>
-                    <div class="progress" ng-show="file.status == 'Done...100%'">
-                        <div class="progress-bar progress-bar-success progress-bar-striped" ng-show="file.status == 'Done...100%'" style="width: {{ file.progress }}%" ng-init="progress=0" role="progressbar">
+                    <div class="progress" ng-show="file.status == 'Done...100%.. Draft Saved! Now, Hit the Publish Button to go live when you are ready'">
+                        <div class="progress-bar progress-bar-success progress-bar-striped" ng-show="file.status == 'Done...100%'"
+                             style="width: {{ file.progress }}%" ng-init="progress=0" role="progressbar">
                             <span class="sr-only">{{ file.progress }}</span>
                         </div>
                     </div>
@@ -43,7 +53,7 @@
                     </div>
 
                     <!-- Add this -->
-                    <div class="form_line" ng-show="file.status == 'Done...100%'">
+                    <div class="form_line" ng-show="file.status == 'Done...100%.. Draft Saved! Now, Hit the Publish Button to go live when you are ready'">
                         <div class="form_controls">
                             <div class="preview">
                                 <video controls ngf-src="file.result.response.url || file" autoplay="autoplay"></video>

@@ -8,13 +8,13 @@
                 <!-- 4:3 aspect ratio -->
                 <div class="embed-responsive embed-responsive-4by3">
                     <video width="320" height="240" poster="" controls >
-                        <source ng-src="{{ videos.url | trustUrl }}" type="video/webm">
-                        <source ng-src="{{ videos.url | trustUrl }}" type="video/mp4">
-                        <source ng-src="{{ videos.url | trustUrl }}" type="video/ogg">
+                        <source ng-src="{{ video.url | trustUrl }}" type="video/webm">
+                        <source ng-src="{{ video.url | trustUrl }}" type="video/mp4">
+                        <source ng-src="{{ video.url | trustUrl }}" type="video/ogg">
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <p>{{ video.description }}</p>
+                <p>{{ video.description | limitTo: 100 }}{{video.description > 100 ? '...' : ''}}</p>
             </div>
 
         </div>
@@ -31,7 +31,7 @@
 </div>
 </div>
 <div class="text-center">
-    <a class="btn btn-default" href="https://github.com/goodheads/yourtube"><i class="ion-social-github"></i> GitHub project</a>
-    <a class="btn btn-default" href="https://github.com/goodheads/yourtube/issues/new"><i class="ion-bug"></i> Report issue</a>
+    <a class="btn btn-default" href="https://github.com/iamraphson/yourstube"><i class="ion-social-github"></i> GitHub project</a>
+    <a class="btn btn-default" href="https://github.com/iamraphson/yourstube/issues/new"><i class="ion-bug"></i> Report issue</a>
 </div>
 </div>

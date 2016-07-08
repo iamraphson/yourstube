@@ -14,7 +14,7 @@ app.factory('Video', function($http){
         },
 
         fetchAll: function(){
-          $http.get('/api/videos');
+            return $http.get('/api/videos');
         }
     }
 });

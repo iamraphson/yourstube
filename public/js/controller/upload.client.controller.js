@@ -32,7 +32,9 @@ app.controller('UploadController', function($scope, $rootScope, $location, $http
                     };
 
                     Video.create(details, function(status, data){
-                        if(success){
+                        if(data.success){
+                            $scope.video.title = '';
+                            $scope.video.description = '';
                             toastr.success(data.message, {timeOut: 3000});
                         } else {
                             toastr.error(data.message, 'Error', {timeOut: 3000});
