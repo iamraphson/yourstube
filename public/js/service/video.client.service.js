@@ -36,6 +36,16 @@ app.factory('Video', function($http){
                     cb(false, response.data);
                 }
             });
+        },
+
+        updateVideoDetails : function(id, details, cb){
+            $http.put('/api/videos/' + id, details).then(function(response){
+                if(response.data.success){
+                    cb(true, response.data);
+                } else {
+                    cb(false, response.data);
+                }
+            })
         }
     }
 });

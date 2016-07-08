@@ -48,6 +48,7 @@ module.exports = {
         var format = req.body.format;
 
         var response = videoUrl.split("upload")[0].concat("upload/ac_none/" + publicId + "." + format );
+        console.log("Remove Audio response -> " + response);
         return response;
 
     },
@@ -59,6 +60,7 @@ module.exports = {
         var color = req.body.videoBackground || "yellow";
 
         var response = videoUrl.split("upload")[0].concat("upload/w_300,h_300,c_pad,b_" + color + "/" + publicId + "." + format );
+        console.log("Change BG response -> " + response);
         return response;
     }
 }

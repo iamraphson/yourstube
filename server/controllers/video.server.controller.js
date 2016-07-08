@@ -49,7 +49,7 @@ module.exports = {
     },
 
     /**
-     *  fetch all uploaded video by current logged in user
+     * fetch all uploaded video by current logged in user
      * @param req
      * @param res
      * @return {object}
@@ -63,6 +63,13 @@ module.exports = {
         });
     },
 
+
+    /**
+     * fetch video details by public ID
+     * @param req
+     * @param res
+     * @return {object}
+     */
     retrieveVideoByPublicId: function(req, res){
         var publicId = req.params.public_id;
         video.findOne({public_id : publicId}, function(err, video){
@@ -73,6 +80,11 @@ module.exports = {
         });
     },
 
+    /**
+     * Update video details
+     * @param req
+     * @param res
+     */
     updateVideoDetails: function(req, res){
         var publicId = req.params.public_id;
         var videoDetails = req.body;
@@ -84,10 +96,10 @@ module.exports = {
         }
 
         if(req.body.videoBackground) {
-            var coloredVideoUrl = Upload.changeBackground(req, res);
+            var coloredVideoUrl = upload.changeBackground(req, res);
         }
 
-        Video.update({public_id : publicId}, videoDetails, function (err) {
+        video.update({public_id : publicId}, videoDetails, function (err) {
             if(err) {
                 return res.status(404).json({success: false, message: 'User Details Not Found', err: err});
             } else {
