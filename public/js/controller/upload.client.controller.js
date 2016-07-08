@@ -1,7 +1,7 @@
 /**
  * Created by Raphson on 7/1/16.
  */
-app.controller('UploadController', function($scope, $rootScope, $location, $http, Upload){
+app.controller('UploadController', function($scope, $rootScope, $location, $http, Upload, Video, toastr){
 
     $scope.uploadFiles = function(files){
         $scope.files = files;
@@ -19,9 +19,28 @@ app.controller('UploadController', function($scope, $rootScope, $location, $http
                     file.status = "Uploading...";
                     file.progress = Math.round((e.loaded * 100.0) / e.total);
                 }).success(function (data, status, headers, config) {
-                    file.status = "Done...100%";
+                    file.status = "Done...100%.. Draft Saved! Now, Hit the Publish Button to go live when you are ready";
                     console.log(data);
                     file.result = data;
+                    var details = {
+                      title: $scope.video.title,
+                      public_id: data.response.public_id,
+                      description: $scope.video.description,
+                      url: data.response.url,
+                      duration: data.response.duration,
+                      format: data.response.format
+                    };
+
+                    Video.create(details, function(status, data){
+                        if(success){
+                            toastr.success(data.message, {timeOut: 3000});
+                        } else {
+                            toastr.error(data.message, 'Error', {timeOut: 3000});
+                        }
+                    });
+
+                    file.status = "Your Video is live now!";
+
                 }).error(function (data, status, headers, config) {
                     file.result = data;
                 });
