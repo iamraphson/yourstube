@@ -2,7 +2,7 @@
  * Created by Raphson on 6/28/16.
  */
 var app = angular.module('yourstube', ['ngCookies', 'ngRoute', 'ngStorage', 'ngMessages', 'angularMoment','angular-loading-bar',
-    'ui.bootstrap', 'toastr', 'ngSanitize', 'ngLodash', 'satellizer', 'cloudinary',
+    'ui.bootstrap', 'toastr', 'ngSanitize', 'ngLodash', 'satellizer', 'cloudinary', 'ngFileUpload',
     'angularUtils.directives.dirDisqus', 'appRoutes'])
     .config(['cfpLoadingBarProvider', '$httpProvider','$authProvider', 'cloudinaryProvider', function(cfpLoadingBarProvider, $httpProvider, $authProvider, cloudinaryProvider){
 
@@ -17,5 +17,5 @@ var app = angular.module('yourstube', ['ngCookies', 'ngRoute', 'ngStorage', 'ngM
         cfpLoadingBarProvider.includeBar = true;
         cfpLoadingBarProvider.includeSpinner = false;
 
-        cloudinaryProvider.set("cloud_name", "unicodeveloper").set("upload_preset", "b9ej8dr5");
+        cloudinaryProvider.set("cloud_name", "iamraphson").set("upload_preset", "dloyv1pjb");
     }]);

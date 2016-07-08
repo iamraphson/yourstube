@@ -41,6 +41,15 @@
                             <span class="sr-only">{{ file.progress }}</span>
                         </div>
                     </div>
+
+                    <!-- Add this -->
+                    <div class="form_line" ng-show="file.status == 'Done...100%'">
+                        <div class="form_controls">
+                            <div class="preview">
+                                <video controls ngf-src="file.result.response.url || file" autoplay="autoplay"></video>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

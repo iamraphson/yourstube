@@ -1,7 +1,7 @@
 /**
  * Created by Raphson on 7/1/16.
  */
-app.controller('UploadController', function($scope, $rootScope, $location, Upload, $http){
+app.controller('UploadController', function($scope, $rootScope, $location, $http, Upload){
 
     $scope.uploadFiles = function(files){
         $scope.files = files;
@@ -20,6 +20,7 @@ app.controller('UploadController', function($scope, $rootScope, $location, Uploa
                     file.progress = Math.round((e.loaded * 100.0) / e.total);
                 }).success(function (data, status, headers, config) {
                     file.status = "Done...100%";
+                    console.log(data);
                     file.result = data;
                 }).error(function (data, status, headers, config) {
                     file.result = data;
