@@ -4,6 +4,7 @@
 var userCtrl = require('./controllers/user.server.controller');
 var token = require('../config/token');
 var uploadCtrl = require('./controllers/Upload.server.controller');
+var videoCtrl = require('./controllers/video.server.controller');
 
 module.exports = function(app){
     app.get('/api', token.ensureAuthenticated, userCtrl.welcome);
@@ -15,4 +16,7 @@ module.exports = function(app){
     app.get('/api/me', token.ensureAuthenticated, userCtrl.getLoggedInUserDetail);
 
     app.post('/api/upload', token.ensureAuthenticated, uploadCtrl.uploadVideo);
+
+    app.post('/api/videos/create', token.ensureAuthenticated, videoCtrl.create);
+    app.get('/api/videos', token.ensureAuthenticated, videoCtrl.retrieveAll);
 };
