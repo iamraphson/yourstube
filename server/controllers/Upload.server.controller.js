@@ -25,7 +25,7 @@ module.exports = {
         form.on('file', function(name, file){
             cloudinary.uploader.upload(file.path, function(response){
                 return res.json({response: response});
-            }, {resource_type: 'video'});
+            }, {resource_type: 'video', chunk_size: 10000000});
         });
         form.on('close', function(){
             console.log("uploaded!!");

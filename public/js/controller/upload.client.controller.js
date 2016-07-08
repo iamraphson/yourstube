@@ -23,21 +23,23 @@ app.controller('UploadController', function($scope, $rootScope, $location, $http
                     console.log(data);
                     file.result = data;
                     var details = {
-                      title: $scope.video.title,
-                      public_id: data.response.public_id,
-                      description: $scope.video.description,
-                      url: data.response.url,
-                      duration: data.response.duration,
-                      format: data.response.format
+                          title: $scope.video.title,
+                          public_id: data.response.public_id,
+                          description: $scope.video.description,
+                          url: data.response.url,
+                          duration: data.response.duration,
+                          format: data.response.format,
+                          width: data.response.width,
+                          height: data.response.height
                     };
 
                     Video.create(details, function(status, data){
                         if(data.success){
                             $scope.video.title = '';
                             $scope.video.description = '';
-                            toastr.success(data.message, {timeOut: 3000});
+                            toastr.success(data.message);
                         } else {
-                            toastr.error(data.message, 'Error', {timeOut: 3000});
+                            toastr.error(data.message, 'Error');
                         }
                     });
 

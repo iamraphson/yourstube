@@ -17,7 +17,10 @@ module.exports = {
             description: req.body.description,
             url: req.body.url,
             duration: req.body.duration,
-            format: req.body.format
+            format: req.body.format,
+            width: req.body.width,
+            height: req.body.height,
+            uploaded_by: req.user
         });
 
          newVideo.save(function(err, result){
