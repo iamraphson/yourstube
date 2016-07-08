@@ -2,6 +2,7 @@
  * Created by Raphson on 7/8/16.
  */
 var video = require('../models/video.server.model');
+var upload = require('./Upload.server.controller');
 
 module.exports = {
 
@@ -59,6 +60,45 @@ module.exports = {
                 return res.status(500).json({ message: err.message });
             }
             return res.status(200).json({success: true, videos: videos});
+        });
+    },
+
+    retrieveVideoByPublicId: function(req, res){
+        var publicId = req.params.public_id;
+        video.findOne({public_id : publicId}, function(err, video){
+            if(err) {
+                return res.status(500).json({ message: err.message });
+            }
+            return res.status(200).json({success: true, video: video});
+        });
+    },
+
+    updateVideoDetails: function(req, res){
+        var publicId = req.params.public_id;
+        var videoDetails = req.body;
+
+        upload.tagVideos(req, res);
+
+        if(req.body.audio){
+            var newVideoUrl = upload.removeAudio(req, res);
+        }
+
+        if(req.body.videoBackground) {
+            var coloredVideoUrl = Upload.changeBackground(req, res);
+        }
+
+        Video.update({public_id : publicId}, videoDetails, function (err) {
+            if(err) {
+                return res.status(404).json({success: false, message: 'User Details Not Found', err: err});
+            } else {
+                return res.status(200)
+                    .json({
+                        success: true,
+                        message: 'Update Successful',
+                        audioUrl: newVideoUrl,
+                        colorVideoUrl: coloredVideoUrl
+                    });
+            }
         });
     }
 }

@@ -17,7 +17,7 @@
                         </video>
                     </div>
                     <p> {{ video.description | limitTo: 100 }}{{video.description > 100 ? '...' : ''}}</p>
-                    <a href="/my_videos/{{ video.public_id }}" class="btn" /> Edit </a>
+                    <a href="/video/{{ video.public_id }}" class="btn" /> Edit </a>
                 </div>
 
             </div>

@@ -31,5 +31,34 @@ module.exports = {
             console.log("uploaded!!");
         });
         form.parse(req);
+    },
+
+    tagVideos: function(req, res){
+        var tag = req.body.tag;
+        var publicId = req.params.public_id;
+
+        cloudinary.uploader.add_tag(tag, [publicId], function(response){
+            console.log("Add Tags response -> " + response);
+        }, { resource_type: "video" });
+    },
+
+    removeAudio: function(req, res){
+        var videoUrl = req.body.url;
+        var publicId = req.params.public_id;
+        var format = req.body.format;
+
+        var response = videoUrl.split("upload")[0].concat("upload/ac_none/" + publicId + "." + format );
+        return response;
+
+    },
+
+    changeBackground: function(req, res){
+        var videoUrl = req.body.url;
+        var publicId = req.params.public_id;
+        var format = req.body.format;
+        var color = req.body.videoBackground || "yellow";
+
+        var response = videoUrl.split("upload")[0].concat("upload/w_300,h_300,c_pad,b_" + color + "/" + publicId + "." + format );
+        return response;
     }
 }

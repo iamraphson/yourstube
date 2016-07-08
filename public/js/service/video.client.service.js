@@ -25,6 +25,17 @@ app.factory('Video', function($http){
                     cb(true, response.data);
                 }
             });
+        },
+
+        fetchEachVideoDetails: function(id, cb){
+            $http.get('/api/videos/' + id).then(function(response){
+                if(response.data.success){
+                    cb(true, response.data);
+                }
+                else{
+                    cb(false, response.data);
+                }
+            });
         }
     }
 });

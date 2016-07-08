@@ -53,6 +53,13 @@ appRoutes.config(['$routeProvider', '$locationProvider', function($routeProvider
                 loginRequired: loginRequired
             }
         })
+        .when('/video/:id', {
+            templateUrl: './../views/editvideo.client.view.html',
+            controller: 'TransformController',
+            resolve: {
+                loginRequired: loginRequired
+            }
+        })
         .otherwise({ redirectTo: '/' });
 
 
