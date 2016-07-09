@@ -90,6 +90,8 @@ module.exports = {
         var videoDetails = req.body;
 
         upload.tagVideos(req, res);
+        var resizeVideoUrl = upload.resizeVideo(req, res);
+
 
         if(req.body.audio){
             var newVideoUrl = upload.removeAudio(req, res);
@@ -98,6 +100,7 @@ module.exports = {
         if(req.body.videoBackground) {
             var coloredVideoUrl = upload.changeBackground(req, res);
         }
+        console.log(videoDetails);
 
         video.update({public_id : publicId}, videoDetails, function (err) {
             if(err) {
@@ -108,7 +111,8 @@ module.exports = {
                         success: true,
                         message: 'Update Successful',
                         audioUrl: newVideoUrl,
-                        colorVideoUrl: coloredVideoUrl
+                        colorVideoUrl: coloredVideoUrl,
+                        resizeVideoUrl: resizeVideoUrl
                     });
             }
         });

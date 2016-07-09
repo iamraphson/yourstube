@@ -45,9 +45,11 @@
 
                         <div class="form_group">
                             <label path="title"> Width: </label>
-                            <input type="text" placeholder="width" ng-model="videoDetails.width">
+                            <input type="range"  min="0" max="2000" ng-model="videoDetails.width" />
+                            <input type="text" placeholder="width" readonly ng-model="videoDetails.width">
                             <label path="title"> Height: </label>
-                            <input type="text" placeholder="height" ng-model="videoDetails.height">
+                            <input type="range"  min="0" max="2000" ng-model="videoDetails.height" />
+                            <input type="text" placeholder="height" readonly ng-model="videoDetails.height">
                         </div>
 
                         <div class="form_group">
@@ -85,6 +87,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-8">
+                        <div class="form_controls">
+                            <div class="preview">
+                                <label> Resized Video </label>
+                                <video controls ngf-src="videoDetails.resizedVideo" autoplay="autoplay">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

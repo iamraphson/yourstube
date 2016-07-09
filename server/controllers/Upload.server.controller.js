@@ -62,5 +62,19 @@ module.exports = {
         var response = videoUrl.split("upload")[0].concat("upload/w_300,h_300,c_pad,b_" + color + "/" + publicId + "." + format );
         console.log("Change BG response -> " + response);
         return response;
+    },
+
+    resizeVideo: function(req, res){
+        var videoUrl = req.body.url;
+        var publicId = req.params.public_id;
+        var width = req.body.width;
+        var height = req.body.height;
+        var format = req.body.format;
+
+        /**
+         * You can alternatively use the cloudinary method like so: cloudinary.video("dog.mp4", {width: 150, height: 100})
+         */
+        var response = videoUrl.split("upload")[0].concat("upload/w_" + width + ",h_" + height + "/" + publicId + "." + format);
+        return response;
     }
 }

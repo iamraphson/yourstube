@@ -28,6 +28,7 @@ app.controller('TransformController', function($scope, $localStorage, $routePara
                 toastr.success(data.message);
                 $scope.videoDetails.preview = data.audioUrl;
                 $scope.videoDetails.colorPreview = data.colorVideoUrl;
+                $scope.videoDetails.resizedVideo = data.resizeVideoUrl;
             } else {
                 toastr.error( data.message, 'Error');
             }
