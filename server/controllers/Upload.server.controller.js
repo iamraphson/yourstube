@@ -90,5 +90,12 @@ module.exports = {
             .concat("upload/so_" + startOffSet + "p,du_" + duration + "p/" + publicId + "." + format);
         console.log("Resize Video response -> " + response);
         return response;
+    },
+
+    deleteVideo: function(publicId, res){
+        cloudinary.uploader.destroy(publicId, function(result){
+            return res.json("Delete video-> "+ result);
+        }, {resource_type: 'video'});
+
     }
 }

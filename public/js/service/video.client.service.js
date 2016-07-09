@@ -46,6 +46,16 @@ app.factory('Video', function($http){
                     cb(false, response.data);
                 }
             })
+        },
+
+        deleteVideo: function(id, cb){
+            $http.delete('/api/videos/' + id).then(function(response){
+                if(response.data.success){
+                    cb(true, response.data);
+                } else {
+                    cb(false, response.data);
+                }
+            });
         }
     }
 });

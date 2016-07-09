@@ -18,6 +18,23 @@
                     </div>
                     <p> {{ video.description | limitTo: 100 }}{{video.description > 100 ? '...' : ''}}</p>
                     <a href="/video/{{ video.public_id }}" class="btn" /> Edit </a>
+                    <button class="btn btn-danger"
+                            mwl-confirm
+                            title="{{ vm.title }}"
+                            message="{{ vm.message }}"
+                            confirm-text="{{ vm.confirmText }}"
+                            cancel-text="{{ vm.cancelText }}"
+                            placement="{{ placement }}"
+                            on-confirm="deleteVideo(video.public_id)"
+                            on-cancel="vm.cancelClicked = true"
+                            confirm-button-type="danger"
+                            cancel-button-type="default"
+                            ng-init="vm = {title: 'Are you sure?', message: 'Are you really <b>sure</b> you want to do this?',
+                            confirmText: 'Yes <i class=\'glyphicon glyphicon-ok\'></i>',
+                            cancelText: 'No <i class=\'glyphicon glyphicon-remove\'></i>'}">
+                        Delete
+                    </button>
+
                 </div>
 
             </div>

@@ -117,5 +117,18 @@ module.exports = {
                     });
             }
         });
+    },
+
+    deleteVideo: function(req, res){
+        var publicId = req.params.public_id;
+        upload.deleteVideo(publicId, res);
+
+        video.remove({public_id: publicId}, function(err, user){
+            if(err){
+                return res.status(404).json({success: false, message:err.message});
+            }
+
+            return res.json({success: true, message: 'Video Deleted Successfully'})
+        });
     }
 }

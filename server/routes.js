@@ -18,10 +18,11 @@ module.exports = function(app){
     app.post('/api/upload', token.ensureAuthenticated, uploadCtrl.uploadVideo);
 
     app.post('/api/videos/create', token.ensureAuthenticated, videoCtrl.create);
-    app.get('/api/videos', token.ensureAuthenticated, videoCtrl.retrieveAll);
+    app.get('/api/videos', videoCtrl.retrieveAll);
     app.get('/api/me/videos', token.ensureAuthenticated, videoCtrl.retrieveAllByUserId);
     app.get('/api/videos/:public_id', token.ensureAuthenticated, videoCtrl.retrieveVideoByPublicId);
     app.put('/api/videos/:public_id', token.ensureAuthenticated, videoCtrl.updateVideoDetails);
+    app.delete('/api/videos/:public_id', token.ensureAuthenticated, videoCtrl.deleteVideo);
 
 
 };
