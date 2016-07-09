@@ -2,7 +2,7 @@
  * Created by Raphson on 6/28/16.
  */
 var app = angular.module('yourstube', ['ngCookies', 'ngRoute', 'ngStorage', 'ngMessages', 'angularMoment','angular-loading-bar',
-    'ui.bootstrap', 'toastr', 'ngSanitize', 'ngLodash', 'satellizer', 'cloudinary', 'ngFileUpload',
+    'ui.bootstrap', 'toastr', 'ngSanitize', 'ngLodash', 'satellizer', 'cloudinary', 'ngFileUpload', 'mwl.confirm',
     'angularUtils.directives.dirDisqus', 'appRoutes'])
     .config(['cfpLoadingBarProvider', '$httpProvider','$authProvider', 'cloudinaryProvider', function(cfpLoadingBarProvider, $httpProvider, $authProvider, cloudinaryProvider){
 
