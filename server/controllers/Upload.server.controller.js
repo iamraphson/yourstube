@@ -75,6 +75,20 @@ module.exports = {
          * You can alternatively use the cloudinary method like so: cloudinary.video("dog.mp4", {width: 150, height: 100})
          */
         var response = videoUrl.split("upload")[0].concat("upload/w_" + width + ",h_" + height + "/" + publicId + "." + format);
+        console.log("Resize Video response -> " + response);
+        return response;
+    },
+
+    trimVideo: function(req, res){
+        var videoUrl = req.body.url;
+        var publicId = req.params.public_id;
+        var startOffSet = req.body.startOffset;
+        var duration = req.body.duration;
+        var format = req.body.format;
+
+        var response = videoUrl.split("upload")[0]
+            .concat("upload/so_" + startOffSet + "p,du_" + duration + "p/" + publicId + "." + format);
+        console.log("Resize Video response -> " + response);
         return response;
     }
 }

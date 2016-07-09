@@ -91,7 +91,7 @@ module.exports = {
 
         upload.tagVideos(req, res);
         var resizeVideoUrl = upload.resizeVideo(req, res);
-
+        var trimVideoUrl = upload.trimVideo(req, res);
 
         if(req.body.audio){
             var newVideoUrl = upload.removeAudio(req, res);
@@ -112,7 +112,8 @@ module.exports = {
                         message: 'Update Successful',
                         audioUrl: newVideoUrl,
                         colorVideoUrl: coloredVideoUrl,
-                        resizeVideoUrl: resizeVideoUrl
+                        resizeVideoUrl: resizeVideoUrl,
+                        trimVideoUrl: trimVideoUrl,
                     });
             }
         });

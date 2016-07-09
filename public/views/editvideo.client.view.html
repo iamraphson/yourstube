@@ -53,6 +53,15 @@
                         </div>
 
                         <div class="form_group">
+                            <label path="title"> Start Offset: % </label>
+                            <input type="range" min="10" max="100" ng-model="videoDetails.startOffset">
+                            <input type="text" placeholder="start Offset" readonly ng-model="videoDetails.startOffset"><br/>
+                            <label path="title"> Duration: % </label>
+                            <input type="range" min="5" max="100" ng-model="videoDetails.duration">
+                            <input type="text" placeholder="duration" readonly ng-model="videoDetails.duration">
+                        </div>
+
+                        <div class="form_group">
                             <label>
                                 <input type="checkbox" ng-model="videoDetails.background"> Change Video Background
                             </label>
@@ -92,7 +101,18 @@
                         <div class="form_controls">
                             <div class="preview">
                                 <label> Resized Video </label>
-                                <video controls ngf-src="videoDetails.resizedVideo" autoplay="autoplay">
+                                <video controls ngf-src="videoDetails.resizedVideo" autoplay="autoplay"></video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form_controls">
+                                <div class="preview">
+                                    <label> Trimmed Video </label>
+                                    <video controls ngf-src="videoDetails.trimmedVideo" autoplay="autoplay"></video>
+                                </div>
                             </div>
                         </div>
                     </div>

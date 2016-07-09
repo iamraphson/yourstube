@@ -20,7 +20,7 @@ app.controller('TransformController', function($scope, $localStorage, $routePara
             startOffset: $scope.videoDetails.startOffset,
             duration: $scope.videoDetails.duration,
             videoBackground: $scope.videoDetails.backgroundColor,
-            url: $scope.videoDetails.url
+            url: $scope.videoDetails.url,
         };
 
         Video.updateVideoDetails($scope.videoDetails.public_id, videoDetails, function(status, data){
@@ -29,6 +29,7 @@ app.controller('TransformController', function($scope, $localStorage, $routePara
                 $scope.videoDetails.preview = data.audioUrl;
                 $scope.videoDetails.colorPreview = data.colorVideoUrl;
                 $scope.videoDetails.resizedVideo = data.resizeVideoUrl;
+                $scope.videoDetails.trimmedVideo = data.trimVideoUrl;
             } else {
                 toastr.error( data.message, 'Error');
             }
