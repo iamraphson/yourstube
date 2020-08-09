@@ -1,5 +1,5 @@
 ## yourstube
-
+[![Run on Repl.it](https://repl.it/badge/github/iamraphson/yourstube)](https://repl.it/github/iamraphson/yourstube)
 Yourstube is a ready Video sharing portal. you can easily install the script and launch your own Youtube like portal in moments.
 Built with MongoDB / ExpressJS / AngularJS / NodeJS (MEAN stack)
 
